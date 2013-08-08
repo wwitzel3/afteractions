@@ -1,0 +1,84 @@
+<%def name="generate(fitting)">
+<div name="fitting" style="position: relative; height: 398px; width: 398px;" id="fitting">
+<div style="position: absolute; left: 0px; top: 0px; width: 398px; height: 398px; z-index: 0;" id="mask">
+<img width="398" border="0" );="" sizingmethod="image" ,="" src="/images/assets/panel.png" filter:progid:dximagetransform.microsoft.alphaimageloader(="" 398="" style="position: absolute;"/></div>
+
+<div style="position: absolute; left: 73px; top: 90px; width: 32px; height: 32px; z-index: 1;" id="high1">${image32(fitting['high'][0][0], fitting['high'][0][1])}</div>
+<div style="position: absolute; left: 100px; top: 67px; width: 32px; height: 32px; z-index: 1;" id="high2">${image32(fitting['high'][1][0], fitting['high'][1][1])}</div>
+<div style="position: absolute; left: 133px; top: 50px; width: 32px; height: 32px; z-index: 1;" id="high3">${image32(fitting['high'][2][0], fitting['high'][2][1])}</div>
+<div style="position: absolute; left: 167px; top: 41px; width: 32px; height: 32px; z-index: 1;" id="high4">${image32(fitting['high'][3][0], fitting['high'][3][1])}</div>
+<div style="position: absolute; left: 202px; top: 41px; width: 32px; height: 32px; z-index: 1;" id="high5">${image32(fitting['high'][4][0], fitting['high'][4][1])}</div>
+<div style="position: absolute; left: 236px; top: 50px; width: 32px; height: 32px; z-index: 1;" id="high6">${image32(fitting['high'][5][0], fitting['high'][5][1])}</div>
+<div style="position: absolute; left: 270px; top: 65px; width: 32px; height: 32px; z-index: 1;" id="high7">${image32(fitting['high'][6][0], fitting['high'][6][1])}</div>
+<div style="position: absolute; left: 295px; top: 89px; width: 32px; height: 32px; z-index: 1;" id="high8">${image32(fitting['high'][7][0], fitting['high'][7][1])}</div> 
+            
+<div style="position: absolute; left: 48px; top: 133px; width: 32px; height: 32px; z-index: 1;" id="mid1">${image32(fitting['med'][0][0], fitting['med'][0][1])}</div>
+<div style="position: absolute; left: 40px; top: 168px; width: 32px; height: 32px; z-index: 1;" id="mid2">${image32(fitting['med'][1][0], fitting['med'][1][1])}</div>
+<div style="position: absolute; left: 40px; top: 203px; width: 32px; height: 32px; z-index: 1;" id="mid3">${image32(fitting['med'][2][0], fitting['med'][2][1])}</div>
+<div style="position: absolute; left: 50px; top: 237px; width: 32px; height: 32px; z-index: 1;" id="mid4">${image32(fitting['med'][3][0], fitting['med'][3][1])}</div>
+<div style="position: absolute; left: 66px; top: 267px; width: 32px; height: 32px; z-index: 1;" id="mid5">${image32(fitting['med'][4][0], fitting['med'][4][1])}</div>
+<div style="position: absolute; left: 91px; top: 292px; width: 32px; height: 32px; z-index: 1;" id="mid6">${image32(fitting['med'][5][0], fitting['med'][5][1])}</div>
+<div style="position: absolute; left: 123px; top: 313px; width: 32px; height: 32px; z-index: 1;" id="mid7">${image32(fitting['med'][6][0], fitting['med'][6][1])}</div>
+<div style="position: absolute; left: 155px; top: 326px; width: 32px; height: 32px; z-index: 1;" id="mid8">${image32(fitting['med'][7][0], fitting['med'][7][1])}</div> 
+        
+<div style="position: absolute; left: 313px; top: 133px; width: 32px; height: 32px; z-index: 1;" id="low1">${image32(fitting['low'][0][0], fitting['low'][0][1])}</div>
+<div style="position: absolute; left: 325px; top: 170px; width: 32px; height: 32px; z-index: 1;" id="low2">${image32(fitting['low'][1][0], fitting['low'][1][1])}</div>
+<div style="position: absolute; left: 325px; top: 205px; width: 32px; height: 32px; z-index: 1;" id="low3">${image32(fitting['low'][2][0], fitting['low'][2][1])}</div>
+<div style="position: absolute; left: 316px; top: 239px; width: 32px; height: 32px; z-index: 1;" id="low4">${image32(fitting['low'][3][0], fitting['low'][3][1])}</div>
+<div style="position: absolute; left: 298px; top: 271px; width: 32px; height: 32px; z-index: 1;" id="low5">${image32(fitting['low'][4][0], fitting['low'][4][1])}</div>
+<div style="position: absolute; left: 276px; top: 296px; width: 32px; height: 32px; z-index: 1;" id="low6">${image32(fitting['low'][5][0], fitting['low'][5][1])}</div>
+<div style="position: absolute; left: 248px; top: 315px; width: 32px; height: 32px; z-index: 1;" id="low7">${image32(fitting['low'][6][0], fitting['low'][6][1])}</div>
+<div style="position: absolute; left: 211px; top: 326px; width: 32px; height: 32px; z-index: 1;" id="low8">${image32(fitting['low'][7][0], fitting['low'][7][1])}</div>
+
+<div style="position: absolute; left: 185px; top: 110px; width: 32px; height: 32px; z-index: 1;" id="rig1">${image32(fitting['rig'][0][0], fitting['rig'][0][1])}</div>
+<div style="position: absolute; left: 160px; top: 160px; width: 32px; height: 32px; z-index: 1;" id="rig2">${image32(fitting['rig'][1][0], fitting['rig'][1][1])}</div>
+<div style="position: absolute; left: 208px; top: 160px; width: 32px; height: 32px; z-index: 1;" id="rig3">${image32(fitting['rig'][2][0], fitting['rig'][2][1])}</div>
+
+<div style="position: absolute; left: 119px; top: 214px; width: 32px; height: 32px; z-index: 1;" id="sub1">${image32(fitting['subsystem'][0][0], fitting['subsystem'][0][1])}</div>
+<div style="position: absolute; left: 145px; top: 245px; width: 32px; height: 32px; z-index: 1;" id="sub2">${image32(fitting['subsystem'][1][0], fitting['subsystem'][1][1])}</div>
+<div style="position: absolute; left: 185px; top: 257px; width: 32px; height: 32px; z-index: 1;" id="sub3">${image32(fitting['subsystem'][2][0], fitting['subsystem'][2][1])}</div>
+<div style="position: absolute; left: 224px; top: 244px; width: 32px; height: 32px; z-index: 1;" id="sub4">${image32(fitting['subsystem'][3][0], fitting['subsystem'][3][1])}</div>
+<div style="position: absolute; left: 250px; top: 215px; width: 32px; height: 32px; z-index: 1;" id="sub5">${image32(fitting['subsystem'][4][0], fitting['subsystem'][4][1])}</div>
+
+<div style="position: absolute; left: 98px; top: 114px; width: 24px; height: 24px; z-index: 2;" id="high1l"></div>
+<div style="position: absolute; left: 120px; top: 95px; width: 24px; height: 24px; z-index: 2;" id="high2l"></div>
+<div style="position: absolute; left: 146px; top: 82px; width: 24px; height: 24px; z-index: 2;" id="high3l"></div>
+<div style="position: absolute; left: 174px; top: 76px; width: 24px; height: 24px; z-index: 2;" id="high4l"></div>
+<div style="position: absolute; left: 202px; top: 76px; width: 24px; height: 24px; z-index: 2;" id="high5l"></div>
+<div style="position: absolute; left: 230px; top: 83px; width: 24px; height: 24px; z-index: 2;" id="high6l"></div>
+<div style="position: absolute; left: 254px; top: 97px; width: 24px; height: 24px; z-index: 2;" id="high7l"></div>
+<div style="position: absolute; left: 275px; top: 116px; width: 24px; height: 24px; z-index: 2;" id="high8l"></div>
+
+<div style="position: absolute; left: 75px; top: 146px; width: 24px; height: 24px; z-index: 2;" id="mid1l"></div>
+<div style="position: absolute; left: 70px; top: 174px; width: 24px; height: 24px; z-index: 2;" id="mid2l"></div>
+<div style="position: absolute; left: 70px; top: 202px; width: 24px; height: 24px; z-index: 2;" id="mid3l"></div>
+<div style="position: absolute; left: 78px; top: 230px; width: 24px; height: 24px; z-index: 2;" id="mid4l"></div>
+<div style="position: absolute; left: 94px; top: 256px; width: 24px; height: 24px; z-index: 2;" id="mid5l"></div>
+<div style="position: absolute; left: 112px; top: 276px; width: 24px; height: 24px; z-index: 2;" id="mid6l"></div>
+<div style="position: absolute; left: 136px; top: 291px; width: 24px; height: 24px; z-index: 2;" id="mid7l"></div>
+<div style="position: absolute; left: 164px; top: 301px; width: 24px; height: 24px; z-index: 2;" id="mid8l"></div>
+</div>
+</%def>
+
+<%def name="image32(text, img)">
+%if text and img:
+<div style="border: medium none ; position: absolute; height: 32px; width: 32px; text-align: left;" class="item-icon">
+<img width="32" border="0" );="" sizingmethod="image" ,="" src="${img}" filter:progid:dximagetransform.microsoft.alphaimageloader(="" 32="" style="position: absolute;"/>
+<img width="32" border="0" alt="${text}" title="${text}" );="" sizingmethod="image" ,="" src="/images/blank.gif" filter:progid:dximagetransform.microsoft.alphaimageloader(="" 32="" style="position: absolute;"/>
+</div>
+%else:
+<!-- empty -->
+%endif
+</%def>
+
+
+<%def name="image24(text, img)">
+%if text and img:
+<div style="border: medium none ; position: absolute; height: 24px; width: 24px; text-align: left;" class="item-icon">
+<img width="32" border="0" );="" sizingmethod="image" ,="" src="/images/blank.gif" filter:progid:dximagetransform.microsoft.alphaimageloader(="" 32="" style="position: absolute; left: -4px; top: -4px;"/>
+<img width="24" border="0" alt="${text}" title="${text}" );="" sizingmethod="image" ,="" src="${img}" filter:progid:dximagetransform.microsoft.alphaimageloader(="" 24="" style="position: absolute;"/>
+</div>
+%else:
+<!-- empty -->
+%endif
+</%def>

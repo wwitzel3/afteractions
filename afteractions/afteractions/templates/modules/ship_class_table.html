@@ -1,0 +1,31 @@
+<%def name="generate(ship_classes, date=None)">
+<table width="100%" style="margin-bottom: 5px;">
+<tr>
+<% cols = 4 %>
+%for ships in [ship_classes[i::cols] for i in range(cols)]:
+<td width="200px">${class_table(ships)}</td>
+%endfor
+</table>
+</%def>
+
+<%def name="class_table(ships)">
+    <table class="kb-table" width="100%">
+    <thead class="kb-table-header">
+        <th class="kb-table-cell">Ship class</th>
+        <th class="kb-table-cell" align="center" width="30">K</th>
+        <th class="kb-table-cell" align="center" width="30">L</th>
+    </thead>
+    <tbody>
+    %for pos,ship in enumerate(ships):
+    <%
+        style = 'even' if pos % 2 else 'odd'
+    %>
+        <tr class="kb-table-row-${style}">
+            <td class="kb-table-cell"><b><a class="kb-shipclass" href="/home/filter/${ship[0]}">${ship[1][:16]}</a></b></td>
+            <td class="kl-kill" align="center" width="30px">${ship[2]}</td>
+            <td class="kl-loss" align="center" width="30px">${ship[3]}</td>
+        </tr>
+    %endfor
+    </tbody>
+    </table>
+</%def>

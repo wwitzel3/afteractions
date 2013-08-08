@@ -1,0 +1,55 @@
+<%inherit file="/base.html" />
+
+<hr/>
+<center><a href="/admin/logout">Logout</a></center>
+<hr/>
+
+<p>
+This page will be neglected and constantly overlooked as I have direct access to most everything and know the code base very well.
+As I find myself being annoying with common maintence tasks while deploying new killboards and/or updating existing ones, I will
+most likely start adding the ability to performing those tasks through this admin interface.
+</p>
+
+<h3>Configure Corp or Alliance</h3>
+Here is how you do this. Grab a mail that has someone from your corp or alliance on it. Kill or loss, it doesn't matter and post it. Now use the box below
+to search for your corp or alliance and set it. Simple as that. If you change corps or change alliances and run the killboard and are taking your
+shit with you, just revist this search box.
+
+<label for="entity_name">Corp/Alliance:</label><input type="text" name="entity_name" /> <input type="button" id="entity_set" value="Set" />
+<script>
+/*
+ * JS Example using jQuery, basically just wanted to get this in here
+ * for when I decide to implement all the config ajax requests and shit.
+ */
+$(document).ready(function() {
+	$('#entity_set').click(function() {
+		alert(1);
+	});
+});
+</script>
+
+<hr/>
+
+<h3>Image & Portrait Paths</h3>
+<p>
+Image path is relative from your public folder. Usually this will be /images this is the same for portraits, this is usually /images/portraits.</br>
+The Portrait Full path should be the full path on disk where you want portraits saved to. This needs to be writable by the server as it is going
+to create multiple directories there. This usually looks something like this, /home/afteractions/deploy/public/images/portraits
+</p>
+
+<form style="margin-top: 15px;">
+<label for="entity_name">Image Path:</label><input type="text" name="entity_name" /> <input type="button" name="entity_set" value="Set" />
+<div id="entity_set_message"></div>
+</form>
+<form style="margin-top: 15px;">
+<label for="entity_name">Portrait Path:</label><input type="text" name="entity_name" /> <input type="button" name="entity_set" value="Set" />
+<div id="entity_set_message"></div>
+</form>
+<form style="margin-top: 15px;">
+<label for="entity_name">Portrait Full Path:</label><input type="text" name="entity_name" /> <input type="button" name="entity_set" value="Set" />
+<div id="entity_set_message"></div>
+</form>
+<hr/>
+
+<h3>API Settings</h3>
+Soon

@@ -1,0 +1,67 @@
+<%def name="generate(kills, items_per_page=15)">
+<%
+    from afteractions.lib.helpers import paginate
+    total = kills.count()
+    paginator = paginate.Page(kills, page=c.page if c.page else 1, items_per_page=items_per_page, item_count=total)
+%>
+<table class="kb-table" width="100%" cellspacing="1">
+    <tbody>
+    <tr class="kb-table-header">
+        <td class="kb-table-header" colspan="2" align="center">Details</td>
+        <td class="kb-table-header">Victim</td>
+        <td class="kb-table-header">Finalblow</td>
+
+        <td class="kb-table-header" align="center">System</td>
+        <td class="kb-table-header" align="center"><img src="/images/assets/comment.gif" border="0" height="12px" width="15px"></td>
+    </tr>
+    %if total == 0:
+    <tr>
+        <td class="kb-table-row-even" colspan="6">No data</td>
+    </tr>
+    %else:
+	<% counter=0 %>
+	%for kill in paginator.items:
+	<%
+	    style = 'even' if counter % 2 else 'odd'
+	    #if kill.corporation_id == c.corp_id or kill.alliance_id == c.alliance_id:
+	    #    style += '-loss'    
+	%>
+    <tr class="kb-table-row-${style}" onmouseout="this.className='kb-table-row-${style}';" style="height: 34px; cursor: pointer;" onmouseover="this.className='kb-table-row-hover';" onclick="window.location.href='/home/details/${kill.id}';">
+        <td width="40" align="center">
+            <img src="/images/32_32/${kill.ship.graphic_id}.png" style="vertical-align: bottom;" height="40" border="0" width="40" />    
+        </td>
+        <td height="32" valign="middle" width="150">
+
+        <div class="kb-shiptype"><b>${kill.ship.name}</b><br/>${kill.timestamp.strftime('%m-%d %H:%M')}</div>
+        </td>
+        <td class="kb-table-cell" width="250">
+            <span style="color: rgb(187, 100, 100); font-weight: bold;">${kill.pilot.name}</span>
+            <br/>${kill.corp.name}<br/>
+	%if kill.alliance:
+	   ${kill.alliance.name}
+	%endif
+        </td>
+        <td class="kb-table-cell" width="200">
+        <%
+            finalblow = kill.finalblow()
+        %>
+            <span style="color: rgb(187, 138, 60); font-weight: bold;"> ${finalblow.pilot.name}</span>
+            <br/>${finalblow.corp.name}<br/>
+	%if finalblow.alliance:
+	   ${finalblow.alliance.name}
+	%endif
+        </td>
+        <td class="kb-table-cell" width="110">
+            <b>${kill.system.name}</b>
+            <br/><em>Involved: ${kill.involved.count()}</em>
+
+        </td>
+        <td class="kb-table-cell" align="center" width="10"><b>${kill.comments.count()}</b></td>
+    </tr>
+	<% counter += 1 %>
+	%endfor
+    %endif
+    </tbody>
+</table>
+<div class="pager">${paginator.pager(format='$link_previous [ ~3~ ] $link_next', symbol_previous="prev", symbol_next="next", separator=" ")}</div>
+</%def>

@@ -1,0 +1,7 @@
+<%inherit file="/base.html" />
+<%namespace name="kill_table" file="/modules/kill_table.html" />
+<%namespace name="ship_class_table" file="/modules/ship_class_table.html" />
+
+${ship_class_table.generate(c.ship_classes)}
+Kills: ${c.kill_count}, Losses: ${c.loss_count}
+${kill_table.generate(c.kills)}

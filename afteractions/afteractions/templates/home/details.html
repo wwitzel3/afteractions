@@ -1,0 +1,232 @@
+<%inherit file="/base.html" />
+<%namespace name="fitting_panel" file="/modules/fitting_panel.html" />
+<%
+    kill = c.kill.one()
+    fitting = kill.fitting('32_32')
+%>
+<table class="kb-subtable" width="100%" cellspacing="0" border="0">
+<tbody>
+    <tr>
+    <td width="50%">
+        <table width="395" cellspacing="1" cellpadding="0" border="0" class="kb-table">
+            <tbody>
+            <tr class="kb-table-row-odd">
+                <td rowspan="4" width="64"><img style="vertical-align: bottom;" src="/images/64_64/${kill.ship.graphic_id}.png" /></td>
+                <td width="120">Pilot:</td class="kb-table-cell"><td class="kb-table-cell"><a href="/home/pilot/${kill.pilot.id}">${kill.pilot.name}</a></td>
+
+            </tr>
+            <tr class="kb-table-row-even">
+                <td class="kb-table-cell">Ship:</td><td class="kb-table-cell">${kill.ship.name}</td>
+            </tr>
+            <tr class="kb-table-row-odd">
+                <td class="kb-table-cell">System:</td><td class="kb-table-cell">${kill.system.name}</td>
+            </tr>
+
+            <tr class="kb-table-row-even">
+                <td class="kb-table-cell">Date:</td><td class="kb-table-cell">${kill.timestamp}</td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    <td width="50%">
+        <table width="400" cellspacing="1" cellpadding="0" border="0" class="kb-table">
+
+            <tbody>            
+            <tr class="kb-table-row-odd">
+                <td width="120" class="kb-table-cell">Damage Taken:</td>
+                <td class="kb-table-cell" colspan="2">${kill.damage}</td>
+            </tr>
+            <tr class="kb-table-row-even">
+                <td class="kb-table-cell">ISK Ship / Mods:</td>
+                <td class="kb-table-cell" align="center">${kill.ship.price}M</td>
+                <td class="kb-table-cell" align="center">$0M</td>
+            </tr>
+            <tr class="kb-table-row-odd">
+                <td class="kb-table-cell">Related:</td>
+                <td class="kb-table-cell" colspan="2"><a href="/home/related/${kill.id}">${c.related_count} related kill${'s' if c.related_count > 1 else ''}</a></td>
+            </tr>
+
+            <tr class="kb-table-row-even">
+                <td class="kb-table-cell">Original:</td>
+                <td class="kb-table-cell" colspan="2"><a href="/home/original/${kill.id}">view original mail</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    </tr>
+
+</tbody>
+</table>
+
+
+<table class="kb-subtable" width="100%" cellspacing="0" border="0" style="margin-top: 5px;">
+<tbody>
+    <tr>
+    <td width="50%" valign="top">
+<table class="kb-table" width="395px" cellspacing="1">
+    <thead class="kb-table-header">
+    <tr>
+        <td class="kb-table-header" colspan="2">Ship</td>
+        <td class="kb-table-header" colspan="3">Details</td>
+    </tr>
+    </thead>
+    <tbody>
+<% counter=0 %>
+    %for involved in kill.involved:
+<%
+    style = 'even' if counter % 2 else 'odd'
+    counter += 1
+    if involved.final:
+        style += '-finalblow'    
+%>
+    <tr class="kb-table-row-${style}" onmouseout="this.className='kb-table-row-${style}';" style="height: 0px; cursor: pointer;" onmouseover="this.className='kb-table-row-hover';" onclick="window.location.href='/home/pilot/${involved.pilot.id}';">
+        <td width="50" rowspan="2" align="center"><img style="vertical-align: bottom;" src="/images/portraits/256/${involved.pilot.eve_id}.jpeg" width="50" height="50" border="0" /></td>
+        <td width="50" rowspan="2" align="center"><img style="vertical-align: bottom;" height="50" width="50" src="/images/64_64/${involved.ship.graphic_id}.png" title="${involved.ship.name}" alt="${involved.ship.name}" /></td>
+        <td colspan="2" class="kb-table-cell">
+            ${involved.pilot.name}<br/>
+            %if involved.alliance and not involved.alliance.name == 'None':
+                ${involved.alliance.name}
+            %else:
+                ${involved.corp.name}
+            %endif
+        </td>
+    </tr>
+    <tr class="kb-table-row-${style}">
+        <td class="kb-table-cell" align="center">
+            ${involved.module.name}
+        </td>
+
+        <td class="kb-table-cell" align="center">
+            ${involved.damage}
+        </td>
+    </tr>
+    %endfor
+</tbody>
+
+</table>
+
+    <script language="javascript" type="text/javascript">
+function limitText(limitField, limitNum) {
+    if (limitField.value.length > limitNum) {
+        limitField.value = limitField.value.substring(0, limitNum);
+    }
+}
+</script>
+
+        <h3>Comments</h3>
+        <table width="395" cellspacing="1" cellpadding="0" border="0" class="kb-table">
+          <tbody><tr>
+            <td width="100%" valign="top" align="left">
+              <table width="100%" cellspacing="0" border="0">
+                <tbody>
+
+                <% counter=0 %>
+                %for comment in c.comments:
+                <%
+                    style = 'even' if counter % 2 else 'odd'
+                    counter += 1
+                %>
+                <tr class="kb-table-row-${style}">
+                  <td style="padding: 4px;">
+                    <div style="position: relative;"><a href="#">${comment.name}</a>:
+                    <span style="position: absolute; right: 0px;">${comment.timestamp}</span>
+                    <p>${comment.comment}</p>
+                  </div></td>
+                </tr>
+
+                %endfor
+                <tr>
+                <form action="/home/handle_comment" method="post" name="postform" id="postform">
+                  <td align="center">
+                    <textarea onkeypress="limitText(document.getElementById('comment'),200);" onkeyup="limitText(document.getElementById('countdown'),200);" style="width: 340px;" wrap="PHYSICAL" rows="5" cols="55" id="comment" name="comment" class="comment"/></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+
+                    <br/>
+                    <b>Name:</b>
+                    <input type="text" maxlength="24" size="24" name="name" class="comment-button" style="position: relative; right: -3px;"/>     
+                    &nbsp;  
+                    <input type="submit" value="Add Comment" name="submit" class="comment-button"/>
+                    <input type="hidden" value="${kill.id}" name="kill_id" /><br/>
+                  </td>
+                </tr>
+                </form>
+
+              </tbody>
+         </table>
+        </td></tr></tbody></table>
+        
+    </td>
+    <td width="50%" valign="top">
+    ${fitting_panel.generate(fitting)}
+    
+        <table class="kb-table" width="400px" height="100%" cellspacing="1" style="margin-top: 5px;">
+            <thead class="kb-table-header">
+            <tr>
+                <td class="kb-table-header">Destroyed Items</td>
+                <td class="kb-table-header" align="center">Qty</td>
+            </tr>
+
+            </thead>
+            
+            <tbody>
+            <%
+                counter = 0
+                destroyed_value = 0
+            %>
+            %for module in kill.inventory.filter_by(dropped=False):
+            <%
+                style = 'even' if counter % 2 else 'odd'
+                counter += 1
+                destroyed_value += 0
+            %>
+            <tr class="kb-table-row-${style}">
+               <td class="kb-table-cell">${module.item.name}</td>
+               <td class="kb-table-cell" align="center">${module.qty}</td>
+            </tr>
+            %endfor
+            <tr class="kb-table-row-value">
+
+                <td class="kb-table-cell kl-loss" align="center" colspan="2">${'%.2f' % (destroyed_value / 1000000)}M ISK</td>
+            </tr>
+            </tbody>
+            </table>
+            
+            <table class="kb-table" width="400px" height="100%" cellspacing="1" style="margin-top: 5px;">
+            <thead class="kb-table-header">
+            <tr>
+
+                <td class="kb-table-header">Dropped Items</td>
+                <td class="kb-table-header" align="center">Qty</td>
+            </tr>
+            </thead>
+            
+            <tbody>
+            <%
+                counter=0
+                dropped_value=0
+            %>
+            %for module in kill.inventory.filter_by(dropped=True):
+            <%
+                style = 'even' if counter % 2 else 'odd'
+                counter += 1
+                dropped_value += 0
+            %>
+            <tr class="kb-table-row-${style}">
+               <td class="kb-table-cell">${module.item.name}</td>
+
+               <td class="kb-table-cell" align="center">${module.qty}</td>
+            </tr>
+            %endfor
+            <tr class="kb-table-row-value">
+                <td class="kb-table-cell kl-kill" align="center" colspan="2">${'%.2f' % (dropped_value/1000000)}M ISK</td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    </tr>
+</tbody>
+</table>
+

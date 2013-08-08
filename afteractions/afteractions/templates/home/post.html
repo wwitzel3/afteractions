@@ -1,0 +1,13 @@
+<%inherit file="/base.html" />
+
+<div id="page-title">Post killmail</div>
+
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td valign="top"><div id="content">
+Paste the killmail from your EVEMail inbox into the box below. Make sure you post the <b>ENTIRE</b> mail.<br/>Posting fake or otherwise edited mails is not allowed. All posts are logged.<br/><br/>Remember to post your losses as well.<br/><br/><b>Killmail:</b><br/>
+<form action="/home/add_kill" method="post" class="f_killmail" name="postform" id="postform">
+<textarea rows="25" cols="70" class="f_killmail" id="killmail" name="killmail"></textarea><br/><br/>
+<input type="submit" value="Process !" name="submit" id="submit"/>
+</form>
+</div></td>
+</tr></tbody></table>

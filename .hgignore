@@ -1,0 +1,35 @@
+syntax: glob
+.project
+.pydevproject
+*.db
+*.zip
+*.bz2
+*.png
+*.pyc
+*.o
+*~
+*.rej
+*.orig
+*.tmp
+dist/**
+*egg-info*
+*.egg
+.project
+.pydevproject
+MANIFEST.in
+.coverage
+data/**
+build/**
+nbproject
+nbproject/**
+mails/**
+paster
+env/**
+images/**
+*.jpeg
+*.ini
+*.log
+*.pid
+
+syntax: regexp
+.*\#.*\#$
